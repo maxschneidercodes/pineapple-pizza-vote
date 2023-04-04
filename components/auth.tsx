@@ -10,7 +10,7 @@ const uiConfig = {
 function SignInScreen() {
     return (
         <div className="card mt-5 pb-5 pt-5 shadow-lg">
-            <h1 className="display-1 fw-bold text-center">Voter App</h1>
+            <h1 className="display-2 fw-bold text-center m-4">Pineapple on Pizza?</h1>
             <p className="text-muted mt-4 text-center">Please sign-in:</p>
             <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
         </div>
