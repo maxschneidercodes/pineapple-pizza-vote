@@ -2,7 +2,6 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
-
 const clientCredentials = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -16,5 +15,7 @@ if (!firebase.apps.length) {
   firebase.initializeApp(clientCredentials);
 }
 
+const firestore = firebase.firestore()
 
-export default firebase;
+export { firebase };
+export { firestore };
