@@ -1,12 +1,12 @@
 import SignInScreen from "../components/auth"
 import { useEffect, useState } from "react";
-import UserInterface from "../data/UserInterface";
-import { firebase, firestore } from "../firebase/client"
+import User from "../model/User";
+import { firebase } from "../firebase/client"
 import Vote from "../components/vote";
 
 export default function Home() {
 
-  const [getUser, setUser] = useState<UserInterface>()
+  const [getUser, setUser] = useState<User>()
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {

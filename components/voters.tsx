@@ -1,6 +1,7 @@
 import { useDocument } from "react-firebase-hooks/firestore";
 import { firestore } from "../firebase/client"
 import { doc } from 'firebase/firestore';
+import { VoteType } from "../model/VoteType";
 
 interface Props {
     id: string;
@@ -18,7 +19,7 @@ export default function VoterList({ id, vote }: Props) {
     }
 
     if (error) {
-        return <></>;
+        return <p>{JSON.stringify(error)}</p>;
     }
 
     return (
@@ -33,7 +34,7 @@ export default function VoterList({ id, vote }: Props) {
             <div>
                 <h4 style={{ marginBottom: 0 }}>{value?.data()?.displayName}</h4>
                 <h4 style={{ marginTop: 0 }}>
-                    Voted: {vote === "yes" ? "✔️🍍" : "❌🍍"}
+                    Voted: {vote === VoteType.YES ? "✔️🍍" : "❌🍍"}
                 </h4>
             </div>
         </div>

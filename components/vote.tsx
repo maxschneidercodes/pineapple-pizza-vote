@@ -3,8 +3,13 @@ import Spinner from "../components/spinner";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection } from 'firebase/firestore';
 import { storeVote, storeUserData } from "../firebase/store"
-import UserInterface from "../data/UserInterface";
+import UserInterface from "../model/User";
 import VoterList from "./voters";
+
+enum VoteType {
+    YES = "yes",
+    NO = "no"
+}
 
 export default function Vote(props: { user: UserInterface; }) {
 
@@ -29,15 +34,15 @@ export default function Vote(props: { user: UserInterface; }) {
         <div className="mb-4 mt-5" style={{ flexDirection: "row", display: "flex" }}>
             <button
                 style={{ fontSize: 32, marginRight: 8 }}
-                onClick={() => addVote("yes")}
+                onClick={() => addVote(VoteType.YES)}
             >
                 ✔️🍍🍕
             </button>
             <h3>
-                Pineapple Lovers:{" "}
+                Pineapple Lovers:
                 {
                     votes?.docs?.filter(
-                        (doc) => doc.data().vote === "yes"
+                        (doc) => doc.data().vote === VoteType.YES
                     ).length
                 }
             </h3>
@@ -45,15 +50,15 @@ export default function Vote(props: { user: UserInterface; }) {
         <div style={{ flexDirection: "row", display: "flex" }}>
             <button
                 style={{ fontSize: 32, marginRight: 8 }}
-                onClick={() => addVote("no")}
+                onClick={() => addVote(VoteType.NO)}
             >
                 ❌🍍🍕
             </button>
             <h3>
-                Pineapple Haters:{" "}
+                Pineapple Haters:
                 {
                     votes?.docs?.filter(
-                        (doc) => doc.data().vote === "no"
+                        (doc) => doc.data().vote === VoteType.NO
                     ).length
                 }
             </h3>
